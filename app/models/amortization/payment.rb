@@ -19,11 +19,11 @@ class Amortization::Payment
     numerator/denominator
   end
 
-  def self.monthly_payment(principal, num_of_months, interest_rate)
+  def self.monthly_payment(principal, num_of_months, anual_interest_rate)
     new(
       principal,
       num_of_months,
-      interest_rate.to_f/100/12
+      anual_interest_rate.to_f/100/12
     ).calculate
   end
 end
