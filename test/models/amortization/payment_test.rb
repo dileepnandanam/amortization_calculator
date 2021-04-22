@@ -6,6 +6,6 @@ class Amortization::PaymentTest < ActiveSupport::TestCase
     rate = 10
     number_of_months = 12
     monthly_payment = Amortization::Payment.monthly_payment(principal, number_of_months, rate)
-    assert_equal monthly_payment, 879.158872300099
+    assert_equal monthly_payment, 879.3466983745584
   end
 end

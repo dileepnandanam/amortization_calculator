@@ -6,9 +6,19 @@ class Amortization::Payment
   end
 
   def calculate
-    numerator = @r * ((1 + @r)**@n)
-    denominator = (1 + @r)**@n - 1
-    @p * numerator/denominator
+    factor = get_compound_interest_factor(@r)
+    numerator = @p * factor**@n
+    denominator = (1 - factor**@n) / (1 - factor)
+    numerator/denominator
+  end
+
+  # principal * compound_interest_factor gives compount interest
+  # for the month
+  def get_compound_interest_factor(rate)
+    n = 30 # Interest is applied 30 times a month
+    r = rate
+    t = 1 # Interest calculated for one month
+    (1 + r/30 )**(n * t)
   end
 
   def self.monthly_payment(principal, num_of_months, interest_rate)
