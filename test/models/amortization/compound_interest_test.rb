@@ -2,7 +2,18 @@ require 'test_helper'
 
 class Amortization::CompoundInterestTest < ActiveSupport::TestCase
   test 'monthly_payment to return correct amount' do
+    principal = 10000
+    anual_rate = 10.0
+    total_months = 12
+    interest = Amortization::CompoundInterest.monthly_interest_for(
+      principal,
+      anual_rate,
+      total_months
+    )
+    assert_equal interest, 87.62964285671735
+  end
     
+  test 'compound_interest_factor to return correct amount' do
     principal = 10000
     monthly_rate = 10.0/100/12
     num_of_time_periods = 10
