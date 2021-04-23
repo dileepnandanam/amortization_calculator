@@ -11,10 +11,8 @@ class Amortization::CompoundInterest
     (1 + @r/@n)**(@n * @t)
   end
 
-  def self.monthly_interest_for(principal, anual_rate, num_of_months_remaining)
-    compound_interest_factor = new(anual_rate.to_f/100/12, num_of_months_remaining, 30).compound_interest_factor
-
-    (principal * compound_interest_factor -  principal) / num_of_months_remaining.to_i
-    #<-------total remaining compound interest-------->
+  def self.monthly_interest_for(principal, anual_rate)
+    compound_interest_factor = new(anual_rate.to_f/100/12/30, 30, 1).compound_interest_factor
+    (principal * compound_interest_factor -  principal)
   end
 end

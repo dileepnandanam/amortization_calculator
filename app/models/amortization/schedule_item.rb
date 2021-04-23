@@ -11,8 +11,7 @@ class Amortization::ScheduleItem
     @interest = Amortization::CompoundInterest
       .monthly_interest_for(
         @start_balance,
-        @rate,
-        @num_of_terms - @term
+        @rate
       )
     @principal = @payment - @interest
     @end_balance = @start_balance - @principal
