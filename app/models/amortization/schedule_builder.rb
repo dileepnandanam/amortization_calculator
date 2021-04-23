@@ -1,17 +1,19 @@
 class Amortization::ScheduleBuilder
-  def initialize(terms, principal, anual_rate)
+  def initialize(terms, principal, anual_rate, disbursement_date)
     @terms = terms
     @principal = principal
     @rate = anual_rate.to_f
+    @disbursement_date = disbursement_date
   end
 
   def build
     schedule_items = []
     fixed_monthly_payment = Amortization::Payment.monthly_payment(@principal, @terms, @rate)
-    
+    current_date = @disbursement_date
     (0..@terms - 1).each do |term|
+      current_date = (current_date + 1.months).beginning_of_month
       schedule_items << Amortization::ScheduleItem.new(
-        @principal, fixed_monthly_payment, @rate, term, @terms
+        @principal, fixed_monthly_payment, @rate, current_date
       ).build
       @principal = schedule_items.last.end_balance
     end

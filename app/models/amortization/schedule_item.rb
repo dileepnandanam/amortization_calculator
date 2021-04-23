@@ -1,10 +1,9 @@
 class Amortization::ScheduleItem
-  def initialize(start_balance, payment, anual_rate, term, num_of_terms)
+  def initialize(start_balance, payment, anual_rate, date)
     @start_balance = start_balance
     @payment = payment
     @rate = anual_rate.to_f
-    @num_of_terms = num_of_terms
-    @term = term
+    @date = date
   end
 
   def build
@@ -23,6 +22,6 @@ class Amortization::ScheduleItem
   def end_balance; @end_balance; end
   def interest; @interest; end
   def principal; @principal; end
-  def term; @term; end
+  def date; @date; end
   def payment; @payment; end
 end
