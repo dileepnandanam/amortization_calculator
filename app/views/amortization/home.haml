@@ -1,0 +1,27 @@
+%h1
+  Loany McLoany Funds
+%h2
+  Amortization Calculator
+
+.calculator-form
+  = form_with(url: '/calculate') do
+    = label_tag 'Amount'
+    = '$'
+    %br
+    = text_field_tag :amount, nil, placeholder: 10000
+    %br
+    = label_tag 'Disbursment date'
+    %br
+    = text_field_tag :disbursement_date, nil, placeholder: 'MM/DD/YYYY'
+    %br
+    = label_tag 'Anual Interest rate'
+    %br
+    = text_field_tag :anual_rate, nil, placeholder: 10
+    = '%'
+    %br
+    = label_tag 'Terms'
+    %br
+    = text_field_tag :terms, nil, placeholder: 12
+    = "Months"
+    %br
+    = submit_tag 'Calculate'

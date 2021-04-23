@@ -1,0 +1,10 @@
+.calculator-form {
+  padding: 20px;  
+}
+.calculator-form input {
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  width: 350px;
+  border: 1px solid blue;
+}
