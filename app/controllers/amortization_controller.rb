@@ -26,6 +26,7 @@ class AmortizationController < ApplicationController
     if messages.length == 0
       @payment = Amortization::Payment.monthly_payment(amount, terms, anual_rate)
       @schedule_items = Amortization::ScheduleBuilder.new(terms, amount, anual_rate, disbursement_date).build
+      render 'calculate', layout: false
     else
       render json: {messages: messages}, status: 422 and return
     end
