@@ -12,7 +12,7 @@
     %br
     = label_tag 'Disbursment date'
     %br
-    = text_field_tag :disbursement_date, Date.today.strftime('%m/%d/%Y'), placeholder: 'MM/DD/YYYY'
+    = text_field_tag :disbursement_date, Date.today.strftime('%m/%d/%Y'), placeholder: 'MM/DD/YYYY', class: 'disbursement-date'
     %br
     = label_tag 'Anual Interest rate'
     %br

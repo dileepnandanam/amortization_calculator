@@ -1,4 +1,8 @@
+import datepickerFactory from 'jquery-datepicker';
+datepickerFactory($);
+
 $(document).on('turbolinks:load', () => {
+  $('.disbursement-date').datepicker()
   $('.calculator-form').on('ajax:success', (e) => {
     $('.result').html(e.detail[2].responseText)
     $('.message').html('')
