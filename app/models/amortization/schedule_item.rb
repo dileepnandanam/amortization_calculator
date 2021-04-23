@@ -15,6 +15,7 @@ class Amortization::ScheduleItem
       )
     @principal = @payment - @interest
     @end_balance = @start_balance - @principal
+    @end_balance = @end_balance < 0.0001 ? 0 : @end_balance
     self
   end
 
