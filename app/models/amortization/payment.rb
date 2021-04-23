@@ -10,6 +10,7 @@ class Amortization::Payment
   end
 
   def calculate
+    return @p/@n if @r == 0
     factor = Amortization::CompoundInterest
       .new(@r, NUM_OF_TIME_PERIODS, NUM_OF_TIMES_INTEREST_APPLIED)
       .compound_interest_factor
