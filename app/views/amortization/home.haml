@@ -3,25 +3,27 @@
 %h2
   Amortization Calculator
 
-.calculator-form
-  = form_with(url: '/calculate') do
+.calculator-form-container
+  = form_with(url: '/calculate', class: 'calculator-form', data: {remote: true}) do
     = label_tag 'Amount'
     = '$'
     %br
-    = text_field_tag :amount, nil, placeholder: 10000
+    = text_field_tag :amount, 10000, placeholder: 10000
     %br
     = label_tag 'Disbursment date'
     %br
-    = text_field_tag :disbursement_date, nil, placeholder: 'MM/DD/YYYY'
+    = text_field_tag :disbursement_date, Date.today.strftime('%m/%d/%Y'), placeholder: 'MM/DD/YYYY'
     %br
     = label_tag 'Anual Interest rate'
     %br
-    = text_field_tag :anual_rate, nil, placeholder: 10
+    = text_field_tag :anual_rate, 10, placeholder: 10
     = '%'
     %br
     = label_tag 'Terms'
     %br
-    = text_field_tag :terms, nil, placeholder: 12
+    = text_field_tag :terms, 12, placeholder: 12
     = "Months"
     %br
     = submit_tag 'Calculate'
+    .message
+.result

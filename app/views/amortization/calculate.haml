@@ -1,0 +1,36 @@
+%h2
+  Monthly Payments
+%h1
+  = @payment.round(2)
+%h2
+  Schedule
+
+%table
+  %tr
+    %th
+      Date
+    %th
+      Start Balance
+    %th
+      Principal
+    %th
+      Interest
+    %th
+      Total Pmt
+    %th
+      End Balance
+
+  - @schedule_items.each do |item|
+    %tr
+      %td
+        = item.date.strftime('%m/%d/%Y')
+      %td
+        = item.start_balance.round(2)
+      %td
+        = item.principal.round(2)
+      %td
+        = item.interest.round(2)
+      %td
+        = item.payment.round(2)
+      %td
+        = item.end_balance.round(2)

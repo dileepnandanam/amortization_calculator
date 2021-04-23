@@ -1,10 +1,34 @@
 .calculator-form {
   padding: 20px;  
 }
-.calculator-form input {
+.calculator-form-container input {
   padding: 8px;
   border-radius: 6px;
   margin-bottom: 12px;
-  width: 350px;
+  width: 80%;
+  max-width: 350px;
   border: 1px solid blue;
+}
+.calculator-form-container input[type="submit"] {
+  width: 100px;
+}
+.message {
+  padding: 12px;
+  color: red;
+}
+td, th {
+  padding: 12px;
+  text-align: center;
+}
+table {
+  border: 1px solid black;
+}
+tr:first-child {
+  border-bottom: 1px solid black;
+}
+tr:nth-child(even) {
+  background: #e5dbdb;
+}
+table, th, td {
+  border-collapse: collapse;
 }
