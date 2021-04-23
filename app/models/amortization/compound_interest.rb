@@ -5,7 +5,7 @@ class Amortization::CompoundInterest
     @r = rate.to_f
   end
 
-  # principal * compound_interest_factor gives compound interest
+  # principal * compound_interest_factor gives total amount
   # for the month
   def compound_interest_factor
     (1 + @r/@n)**(@n * @t)
