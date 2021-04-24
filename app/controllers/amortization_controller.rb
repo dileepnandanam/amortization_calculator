@@ -23,7 +23,7 @@ class AmortizationController < ApplicationController
       messages << 'All values must be positive'
     end
 
-    @disbursement_date = (request_date + 1.months).beginning_of_month
+    @disbursement_date = request_date.next_month.beginning_of_month
     if messages.length == 0
       @payment = Amortization::Payment.monthly_payment(amount, terms, anual_rate)
       @schedule_items = Amortization::ScheduleBuilder.new(terms, amount, anual_rate, @disbursement_date).build

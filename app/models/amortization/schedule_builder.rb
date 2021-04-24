@@ -11,7 +11,7 @@ class Amortization::ScheduleBuilder
     fixed_monthly_payment = Amortization::Payment.monthly_payment(@principal, @terms, @rate)
     current_date = @disbursement_date
     (0..@terms - 1).each do |term|
-      current_date = (current_date + 1.months).beginning_of_month
+      current_date = current_date.next_month.beginning_of_month
       schedule_items << Amortization::ScheduleItem.new(
         @principal, fixed_monthly_payment, @rate, current_date
       ).build
