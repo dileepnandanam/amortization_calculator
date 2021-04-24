@@ -12,7 +12,7 @@ class Amortization::CompoundInterest
   end
 
   def self.monthly_interest_for(principal, anual_rate)
-    compound_interest_factor = new(anual_rate.to_f/100/12/30, 30, 1).compound_interest_factor
+    compound_interest_factor = new(anual_rate.to_f/100/12, 1, 30).compound_interest_factor
     (principal * compound_interest_factor -  principal)
   end
 end
