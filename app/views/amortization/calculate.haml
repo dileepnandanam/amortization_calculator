@@ -2,6 +2,8 @@
   Monthly Payments
 %h1
   = @payment.round(2)
+%h3
+  = "Disbursement date: #{@disbursement_date.strftime('%m/%d/%Y')}"
 %h2
   Schedule
 
