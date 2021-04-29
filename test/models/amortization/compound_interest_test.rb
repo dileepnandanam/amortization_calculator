@@ -26,4 +26,19 @@ class Amortization::CompoundInterestTest < ActiveSupport::TestCase
     total = principal * factor
     assert_equal total, 10868.663314051639
   end
+
+  test 'compound_interest_factor to return 1 for zero interest rate' do
+    principal = 10000
+    monthly_rate = 0
+    num_of_time_periods = 12
+    num_of_times_interest_applied = 30
+
+    factor = Amortization::CompoundInterest.new(
+      monthly_rate,
+      num_of_time_periods,
+      num_of_times_interest_applied
+    ).compound_interest_factor
+    
+    assert_equal factor, 1
+  end
 end
