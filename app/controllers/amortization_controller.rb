@@ -4,27 +4,13 @@ class AmortizationController < ApplicationController
   end
 
   def calculate
-    amount = params[:amount]
-    request_date = params[:request_date]
-    anual_rate = params[:anual_rate]
-    terms = params[:terms]
+    amortization_params_builder = Amortization::Params.new(params)
 
-    messages = []
-    if [amount, request_date, anual_rate, terms].any?(&:blank?)
-      messages << 'All fields must be present'
-    end
+    messages = amortization_params_builder.errors
 
-    amount = amount.to_f
-    anual_rate = anual_rate.to_f
-    terms = terms.to_i
-    request_date = Date.strptime(request_date, "%m/%d/%Y")
-    
-    if [amount, anual_rate, terms].any?{|val| val < 0}
-      messages << 'All values must be positive'
-    end
-
-    @disbursement_date = request_date.next_month.beginning_of_month
     if messages.length == 0
+      amount, anual_rate, terms, request_date = amortization_params_builder.get
+      @disbursement_date = request_date.next_month.beginning_of_month
       @payment = Amortization::Payment.monthly_payment(amount, terms, anual_rate)
       @schedule_items = Amortization::ScheduleBuilder.new(terms, amount, anual_rate, @disbursement_date).build
       render 'calculate', layout: false
