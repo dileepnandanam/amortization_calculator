@@ -57,3 +57,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 gem "haml-rails", "~> 2.0"
+gem 'rails-controller-testing'
