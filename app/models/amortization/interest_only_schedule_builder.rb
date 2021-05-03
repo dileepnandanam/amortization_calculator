@@ -15,7 +15,7 @@ class Amortization::InterestOnlyScheduleBuilder < Amortization::ScheduleBuilder
       @principal = schedule_items.last.end_balance
     end
     @disbursement_date = current_date
-    @terms = @terms - 3
+    @terms = @terms - interest_only_terms
     schedule_items + super()
   end
 end
