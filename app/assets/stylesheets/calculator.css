@@ -9,6 +9,9 @@
   max-width: 350px;
   border: 1px solid blue;
 }
+.interest-only-check-box {
+  width: 20px !important;
+}
 .calculator-form-container input[type="submit"] {
   width: 100px;
 }

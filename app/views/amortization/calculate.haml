@@ -1,7 +1,8 @@
-%h2
-  Monthly Payments
-%h1
-  = @payment.round(2)
+- unless params[:interest_only_for_3_months]
+  %h2
+    Monthly Payments
+  %h1
+    = @payment.round(2)
 %h3
   = "Disbursement date: #{@disbursement_date.strftime('%m/%d/%Y')}"
 %h2

@@ -24,6 +24,9 @@
     = text_field_tag :terms, 12, placeholder: 12
     = "Months"
     %br
+    = 'Repay only interest for 3 months'
+    = check_box_tag :interest_only_for_3_months, true, false, class: 'interest-only-check-box'
+    %br
     = submit_tag 'Calculate'
     .message
 .result
