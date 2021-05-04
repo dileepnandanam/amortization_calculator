@@ -30,4 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  amortization:
+    strategies:
+      base: Regular
+      extended3_month_interest_only: Interest only with extended terms
+      first3_month_interest_only: Interest only

@@ -21,8 +21,14 @@ class Amortization::Strategies::Base
   end
 
   def self.strategies
+    #load
+    #Amortization::Strategies::Extended3MonthInterestOnly
+    #Amortization::Strategies::First3MonthInterestOnly
     [self] + ObjectSpace.each_object(::Class).to_a.select { |klass| klass < self }
   end
 
+  def self.strategy_name_class_map
+    self.strategies.map{|s| [s.name.underscore.gsub('/','.'), s]}.to_h
+  end
 
 end
