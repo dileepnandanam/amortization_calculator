@@ -20,6 +20,10 @@ class Amortization::Strategies::Base
     schedule_items
   end
 
+  def self.index
+    1
+  end
+
   def self.strategies
     #load
     #Amortization::Strategies::Extended3MonthInterestOnly
@@ -28,7 +32,11 @@ class Amortization::Strategies::Base
   end
 
   def self.strategy_name_class_map
-    self.strategies.map{|s| [s.name.underscore.gsub('/','.'), s]}.to_h
+    self.strategies.map{ |s| 
+      [s.name.underscore.gsub('/','.'), s]
+    }.sort_by{|name, klass|
+      klass.index
+    }.to_h
   end
 
 end

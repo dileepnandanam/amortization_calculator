@@ -9,4 +9,8 @@ class Amortization::Strategies::Extended3MonthInterestOnly < Amortization::Strat
       @disbursement_date
     ).build
   end
+
+  def self.index
+    3
+  end
 end

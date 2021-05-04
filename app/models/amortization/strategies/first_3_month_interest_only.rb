@@ -27,4 +27,8 @@ class Amortization::Strategies::First3MonthInterestOnly < Amortization::Strategi
 
     schedule_items
   end
+
+  def self.index
+    2
+  end
 end

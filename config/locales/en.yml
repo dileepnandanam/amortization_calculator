@@ -33,5 +33,5 @@ en:
   amortization:
     strategies:
       base: Regular
-      extended3_month_interest_only: First 3 months interest only with extended terms
+      extended3_month_interest_only: Has interest-only duration with term extension
       first3_month_interest_only: First 3 months interest only
