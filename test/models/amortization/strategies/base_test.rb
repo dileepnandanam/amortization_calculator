@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class Amortization::ScheduleBuilderTest < ActiveSupport::TestCase
+class Amortization::Strategies::BaseTest < ActiveSupport::TestCase
   test 'should give correct number of schedule items' do
     terms = 12
     principal = 10000
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::ScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::Base.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     assert_equal schedule_items.count, 12
@@ -19,7 +19,7 @@ class Amortization::ScheduleBuilderTest < ActiveSupport::TestCase
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::ScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::Base.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     assert_equal schedule_items.first.date, disbursement_date.next_month.beginning_of_month
@@ -31,7 +31,7 @@ class Amortization::ScheduleBuilderTest < ActiveSupport::TestCase
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::ScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::Base.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     (1..schedule_items.count - 1).each do |i|

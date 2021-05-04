@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class Amortization::InterestOnlyScheduleBuilderTest < ActiveSupport::TestCase
+class Amortization::Strategies::First3MonthInterestOnlyTest < ActiveSupport::TestCase
   test 'should give correct number of schedule items' do
     terms = 12
     principal = 10000
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::InterestOnlyScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::First3MonthInterestOnly.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     assert_equal schedule_items.count, 12
@@ -19,7 +19,7 @@ class Amortization::InterestOnlyScheduleBuilderTest < ActiveSupport::TestCase
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::InterestOnlyScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::First3MonthInterestOnly.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     assert_equal schedule_items.first.date, disbursement_date.next_month.beginning_of_month
@@ -31,7 +31,7 @@ class Amortization::InterestOnlyScheduleBuilderTest < ActiveSupport::TestCase
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::InterestOnlyScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::First3MonthInterestOnly.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     (1..schedule_items.count - 1).each do |i|
@@ -45,7 +45,7 @@ class Amortization::InterestOnlyScheduleBuilderTest < ActiveSupport::TestCase
     anual_rate = 10.0
     disbursement_date = Date.today
 
-    schedule_items = Amortization::InterestOnlyScheduleBuilder.new(
+    schedule_items = Amortization::Strategies::First3MonthInterestOnly.new(
       terms, principal, anual_rate, disbursement_date
     ).build
     assert_equal schedule_items[3].start_balance, principal
