@@ -25,7 +25,7 @@
     = "Months"
     %br
     - Amortization::Strategies::Base.strategy_name_class_map.each do |name, klass|
-      = radio_button_tag :schedule_type, name, klass == Amortization::Strategies::Base.strategies.first, class: 'interest-only-check-box'
+      = radio_button_tag :schedule_type, name, klass == Amortization::Strategies::Base.strategies.first, class: 'interest-only-check-box', id: name
       = label_tag name, I18n.t(name)
       
       %br
